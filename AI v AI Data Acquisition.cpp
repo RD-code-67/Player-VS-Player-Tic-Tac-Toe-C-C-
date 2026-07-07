@@ -28,6 +28,7 @@ void clean()
     his.clear();
     countZZ=0;
     CH=0;
+    PP=0;
 }
 void chwin()
 {
@@ -54,6 +55,7 @@ void chwin()
     {
         //cout<<"draw";
         CH=1;
+        PP=0;
         return;
     }
 }
@@ -93,21 +95,6 @@ void P2()
 }
 void Datasa()
 {
-    for(const auto&th:his)
-    {
-        if(PP == 1)
-        {
-            His[th.st] -= 50;
-        }
-        else if(PP == 2)
-        {
-            His[th.st]+=50;
-        }
-        else
-        {
-            His[th.st]+=50;
-        }
-    }
     ofstream out;
     out.open("C:\\Users\\Genuine\\Desktop\\DATA2.txt");
     // By Al C:\\Users\\Genuine\\Desktop\\DATA2.txt
@@ -144,12 +131,28 @@ void fdata()
     }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+void SC(){
+        for(const auto&th:his)
+    {
+        if(PP == 1)
+        {
+            His[th.st] -= 50;
+        }
+        else if(PP == 2)
+        {
+            His[th.st]+=50;
+        }
+        else
+        {
+            His[th.st]+=20;
+        }
+    }
+}
 int main()
 {
-    while(true)
-    {
-        fdata();
-        srand(time(0));
+    fdata();
+    srand(time(0));
+    while(true){
         memset(bod,0,sizeof(bod));
         memset(C,' ',sizeof(C));
         while(CH==0)
@@ -169,8 +172,9 @@ int main()
         {
             His[th.st]+=1;
         }
+        SC();
         Datasa();
+          cout<<His.size()<<"\n";
         clean();
     }
 }
-
